@@ -30,9 +30,9 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', [UserController::class, 'viewProfile']);
+
+Route::get('/editProfile', [UserController::class, 'viewEditProfile']);
 
 Route::get('/order', function () {
     return view('orders');
@@ -59,3 +59,5 @@ Route::get('/admin/login', function () {
 Route::post('/signup', [UserController::class,'signup']);
 
 Route::post('/login', [UserController::class,'login']);
+
+Route::post('/editProfile', [UserController::class,'editProfile']);

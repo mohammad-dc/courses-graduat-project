@@ -1,0 +1,15 @@
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 1px 3px 20px #ccc;
+}
+
+.center-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

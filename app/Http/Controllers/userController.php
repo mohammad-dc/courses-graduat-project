@@ -31,7 +31,7 @@ class UserController extends Controller
     }
 
     public function login(Request $req){
-        $query = DB::select("select id, username, email, password full_name, univ_number, gender from users where username='{$req->username}' and password='{$req->password}'");
+        $query = DB::select("select id, full_name, email, password username, univ_number, gender from users where username='{$req->username}' and password='{$req->password}'");
 
         if(count($query) > 0){
             $req->session()->put('user', $query[0]);
@@ -41,12 +41,31 @@ class UserController extends Controller
         }
     }
 
-    public function editProfile(Request $req){}
+    public function editProfile(Request $req){
+        if($req->session()->has('user')){
+            $user = $req->session()->get('user');
+            $query = DB::select("update users set full_name='{$req->full_name}', email='{$req->email}', password='{$req->password}', username='{$req->username}', univ_number='{$req->univ_number}', gender='{$req->gender}' where id={$user->id}");
+            return redirect('profile');
+        } else {
+            return redirect('login?error=true');
+        }
+    }
 
     public function viewProfile(Request $req){
         if($req->session()->has('user')){
             $user = $req->session()->get('user');
-            return view('profile', ['user' => $user]);
+            $query = DB::table("users")->find($user->id);
+            return view('profile', ['user' => $query]);
+        } else {
+            return redirect('login?error=true');
+        }
+    }
+
+    public function viewEditProfile(Request $req){
+        if($req->session()->has('user')){
+            $user = $req->session()->get('user');
+            $query = DB::table("users")->find($user->id);
+            return view('editProfile', ['user' => $query]);
         } else {
             return redirect('login?error=true');
         }

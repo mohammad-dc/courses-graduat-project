@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/profile.css">
     <title>Profile</title>
 </head>
 <body>
     <div class="page">
-        <div class="container">
+        <div class="container center-container">
             <div>
-                <img src="" alt="" />
-                <h2></h2>
-                <p></p>
+                @if($user->gender === "male")
+                <img src="/assets/images/boy.jfif" alt="boy" />
+                @else
+                <img src="/assets/images/girl.jfif" alt="boy" />
+                @endif
+                <h3>{{$user->full_name}} (#{{$user->univ_number}})</h3>
+                <p>@ {{$user->username}}</p>
+                <a href="/editProfile" class="btn btn-info">Edit Profile</a>
             </div>
         </div>
     </div>
