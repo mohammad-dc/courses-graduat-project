@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Get Routes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -52,3 +53,7 @@ Route::get('/admin', function () {
 Route::get('/admin/login', function () {
     return view('adminLogin');
 });
+
+
+//POST Routes
+Route::post('/signup', [UserController::class,'signup']);

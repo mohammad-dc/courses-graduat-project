@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class messagesController extends Controller
+class MessagesController extends Controller
 {
     public function sendMessage(Request $req){}
 
