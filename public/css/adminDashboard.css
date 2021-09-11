@@ -1,0 +1,29 @@
+.sidebar-wrapper {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.page {
+    display: flex;
+    background-color: #eee;
+}
+
+.type_message {
+    position: fixed;
+    left: 380px;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.type_message input {
+    margin: 0;
+    border: none;
+    width: 95%;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.type_message .btn {
+    border-radius: 0 !important;
+}

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,3 +64,5 @@ Route::post('/addCourses', [CoursesController::class,'createCourse']);
 Route::post('/home/{id?}', [OrdersController::class, 'createOrder']);
 
 Route::post('/orders', [OrdersController::class, 'acceptOrder']);
+
+Route::post('/admin/login', [AdminController::class, 'auth']);
