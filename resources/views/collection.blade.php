@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/collections.css">
     <title>Collections</title>
 </head>
 <body>
@@ -33,6 +34,19 @@
               </div>
             </div>
           </nav>
+
+          <div class="body">
+            <h1>My Collections</h1>
+            <div class="container">
+              <div class="row">
+                @foreach($collections as $collection)
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card"><div><span class="badge bg-success">Accepted</span> user: <strong>{{$collection->user_fullname}}</strong>, course: <strong>{{$collection->course_name}}({{$collection->course_type}})</strong></div></div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
     </div>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
