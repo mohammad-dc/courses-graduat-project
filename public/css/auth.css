@@ -1,9 +1,10 @@
 .page {
     height: 100vh;
-}
-
-form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+form h1 {
+    margin-bottom: 30px;
 }

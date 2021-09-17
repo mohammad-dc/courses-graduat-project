@@ -32,6 +32,7 @@
 
               <div class="type_message">
                   <form action="">
+                    @csrf
                       <input type="text" name="replay" id="replay" placeholder="type message">
                       <button type="submit" class="btn btn-info">send</button>
                   </form>

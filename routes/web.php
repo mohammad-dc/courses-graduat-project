@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,8 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/messages', [MessagesController::class, 'viewMessagesForUser']);
 
 Route::get('/home/{id?}', [CoursesController::class, 'viewCourses']);
 

@@ -27,3 +27,9 @@
 .type_message .btn {
     border-radius: 0 !important;
 }
+
+form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
