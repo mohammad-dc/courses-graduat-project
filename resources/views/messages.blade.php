@@ -50,26 +50,30 @@
       </nav>
           <div class="body">
             <div class="container">
-              <form action="login" method="POST">
-                <h1>Send email to the admin</h1>
-                @csrf
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input class="form-control" type="text" id="email" name="email" placeholder="Your Email">
+              <h3>If you need any help, please contact with us:</h3>
+                  <img src="/assets/images/contactus.png" alt="">
+                  
+                  <div class="social-wrapper">
+                    <div class="solcial">
+                      <div class="icon">
+                        <i class="bi bi-envelope"></i>
+                      </div>
+                      <div><span>admin@gmail.com</span></div>
+                    </div>
+                    <div class="solcial">
+                      <div class="icon">
+                        <i class="bi bi-whatsapp"></i>
+                      </div>
+                    <div><span>+970(592839122)</span></div>
+                    </div>
+                    <div class="solcial">
+                      <div class="icon">
+                        <i class="bi bi-facebook"></i>
+                      </div>
+                    <div><span>Courses Book Online</span></div>
+                  </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="subject" class="form-label">Subject</label>
-                    <input class="form-control" type="subject" id="subject" name="subject" placeholder="Subject">
-                </div>
-
-                <div class="mb-3">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" placeholder="Message..."></textarea>
               </div>
-
-                <button type="submit" class="btn btn-info">Send Email</button>
-            </form>
             </div>
             </div>
           </div>

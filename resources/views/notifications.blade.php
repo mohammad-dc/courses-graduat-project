@@ -53,7 +53,7 @@
              <div class="notifications">
                @foreach ($notifications as $notify)
                 <div class="notify">
-                  <p><strong>{{$notify->user_fullname}}</strong> has <span class="badge">Accepted</span> you request for <strong>{{$notify->course_name}}("{{$notify->course_type}}")</strong> with bookcase number <strong>{{$notify->bookcase_number}}</strong> and password <strong>{{$notify->bookcase_password}}</strong></p>
+                  <p> your request for <strong>{{$notify->course_name}}("{{$notify->course_type}}")</strong> with bookcase number <strong>{{$notify->bookcase_number}}</strong> and password <strong>{{$notify->bookcase_password}}</strong> has been <span class="badge">Accepted</span></p>
                 </div>
                @endforeach
                  

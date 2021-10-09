@@ -34,7 +34,7 @@ class CoursesController extends Controller
             $user = $req->session()->get('user');
 
             $query = DB::select(
-                "select id, user_id, name, type from courses where user_id!={$user->id}"
+                "select c.id, c.user_id, c.name, c.type from courses as c inner join orders as o on o.course_id=c.id where c.user_id!={$user->id} and accepted=false"
             );
             return view('home', ['courses' => $query, 'user' => $user]);
         } else {
