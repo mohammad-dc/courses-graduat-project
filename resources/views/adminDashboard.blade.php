@@ -15,15 +15,17 @@
               <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
               <span class="fs-5 fw-semibold">Messages</span>
             </a>
-            <div class="list-group list-group-flush border-bottom scrollarea">
-              <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                  <strong class="mb-1">Mohammad</strong>
-                  <small>Wed</small>
-                </div>
-                <div class="col-10 mb-1 small">hi' how r u</div>
-              </a>
-            </div>
+            @foreach($users as $user)
+              <div class="list-group list-group-flush border-bottom scrollarea">
+                <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+                  <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">{{$user->full_name}}</strong>
+                    <small>{{date('d/m/Y', strtotime($user->created_at));}}</small>
+                  </div>
+                  <div class="col-10 mb-1 small">{{$user->message}}</div>
+                </a>
+              </div>
+            @endforeach
           </div>
           <div class="chat">
               <div class="message">

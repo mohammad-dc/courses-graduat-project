@@ -1,22 +1,27 @@
-.user-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 1px 3px 20px #ccc;
+.body {
+    padding: 30px;
+}
+
+.badge{
+    padding: 5px 7px;
+    background: green;
+    color: white;
+    border-radius: 3px
 }
 .bg-light{
     box-shadow: 1px 1px 10px 1px rgb(0,0,0,0.2);
 }
-.center-container {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.notify{
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: 1px solid #aaa;
+    border-radius: 5px
 }
-
-.account-image {
+p{
+    margin: 0;
+    padding: 0;
+}
+img {
     width: 50px;
     height: 50px;
     border-radius: 50%;

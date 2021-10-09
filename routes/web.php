@@ -30,6 +30,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/notifications', [OrdersController::class, 'viewAcceptedOrders']);
+
 Route::get('/signup', function () {
     return view('signup');
 });
@@ -46,23 +48,22 @@ Route::get('/addCourses', function () {
     return view('addCourses');
 });
 
-Route::get('/admin', function () {
-    return view('adminDashboard');
-});
+Route::get('/admin', [MessagesController::class, 'getMessagesSenderForAdmin']);
 
 Route::get('/admin/login', function () {
     return view('adminLogin');
 });
 
+Route::get('/logout', [UserController::class, 'logout']);
 
 //POST Routes
-Route::post('/signup', [UserController::class,'signup']);
+Route::post('/signup', [UserController::class, 'signup']);
 
-Route::post('/login', [UserController::class,'login']);
+Route::post('/login', [UserController::class, 'login']);
 
-Route::post('/editProfile', [UserController::class,'editProfile']);
+Route::post('/editProfile', [UserController::class, 'editProfile']);
 
-Route::post('/addCourses', [CoursesController::class,'createCourse']);
+Route::post('/addCourses', [CoursesController::class, 'createCourse']);
 
 Route::post('/home/{id?}', [OrdersController::class, 'createOrder']);
 

@@ -1,71 +1,27 @@
-body {
-    background-color: #eee;
-}
 .body {
-    padding: 20px 30px;
-}
-
-.chat-box {
-    border: 1px solid #aaa;
-    height: 600px;
-    width: 60%;
-    margin: 0 auto;
-    background-color: #eee;
-    position: relative;
-}
-
-.messaging {
-    padding: 10px;
-}
-.type_message {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.type_message input {
-    margin: 0;
-    border: none;
-    width: 95%;
-    height: 30px;
-    padding: 0 10px;
-}
-
-.type_message .btn {
-    border-radius: 0 !important;
-}
-
-form {
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-}
-
-.message-wrapper-right {
-    display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
+.bg-light{
+    box-shadow: 1px 1px 10px 1px rgb(0,0,0,0.2);
+}
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 1px 3px 20px #ccc;
+}
 
-.message-wrapper-left {
+.user-info{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    padding: 5px 20px
 }
 
-.right {
-    background-color: dodgerblue;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    width: fit-content;
-}
-
-.left {
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    width: fit-content;
+.user-info i {
+    margin-right: 30px;
+    cursor: pointer;
 }
