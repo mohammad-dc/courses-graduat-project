@@ -34,7 +34,7 @@ class CoursesController extends Controller
             $user = $req->session()->get('user');
 
             $query = DB::select(
-                "SELECT c.id, c.user_id, c.name, c.type FROM courses c LEFT JOIN orders o ON o.course_id = c.id WHERE c.user_id!={$user->id} and o.course_id IS NULL or o.accepted=NULL"
+                "SELECT c.id, c.user_id, c.name, c.type FROM courses c LEFT JOIN orders o ON o.course_id = c.id WHERE o.course_id IS NULL and c.user_id!={$user->id} or c.user_id!={$user->id} and o.user_id!={$user->id} and o.accepted=0"
             );
             return view('home', ['courses' => $query, 'user' => $user]);
         } else {

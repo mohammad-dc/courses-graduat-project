@@ -50,7 +50,7 @@ class OrdersController extends Controller
             $user = $req->session()->get('user');
 
             $query = DB::select(
-                "select u.full_name as user_fullname, c.name as course_name, c.type as course_type from orders as o inner join users as u on o.user_id=u.id inner join courses as c on o.course_id=c.id where o.accepted=true and o.user_id!={$user->id}"
+                "select u.full_name as user_fullname, c.name as course_name, c.type as course_type from orders as o inner join users as u on o.user_id=u.id inner join courses as c on o.course_id=c.id where o.accepted=true and o.user_id={$user->id}"
             );
             return view('collection', [
                 'collections' => $query,
@@ -84,7 +84,7 @@ class OrdersController extends Controller
             $user = $req->session()->get('user');
 
             $query = DB::select(
-                "select o.id as order_id, u.full_name as user_fullname, c.name as course_name, c.type as course_type from orders as o inner join users as u on o.user_id=u.id inner join courses as c on o.course_id=c.id where o.accepted=false and o.user_id!={$user->id}"
+                "select o.id as order_id, u.full_name as user_fullname, c.name as course_name, c.type as course_type from orders as o inner join users as u on o.user_id=u.id inner join courses as c on o.course_id=c.id where o.accepted=false and o.user_id!={$user->id} and c.user_id={$user->id}"
             );
             return view('orders', ['orders' => $query, 'user' => $user]);
         } else {
