@@ -12,11 +12,17 @@ class UserController extends Controller
     public function signup(Request $req)
     {
         $query = DB::select(
-            "select email from users where email='{$req->email}'"
+            "select email from users where email='{$req->email}' or username='{$req->username}'"
         );
 
         if (count($query) > 0) {
-            return redirect('signup?error=email_already_taken');
+            if ($query[0]->email == $req->email) {
+                return back()->withErrors(['error' => 'email already taken']);
+            } else {
+                return back()->withErrors([
+                    'error' => 'username already taken',
+                ]);
+            }
         } else {
             $User = new User();
 
@@ -43,7 +49,9 @@ class UserController extends Controller
             $req->session()->put('user', $query[0]);
             return redirect('/home');
         } else {
-            return redirect('login?error=true');
+            return back()->withErrors([
+                'error' => 'username or password is incorrect',
+            ]);
         }
     }
 

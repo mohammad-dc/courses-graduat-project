@@ -24,6 +24,11 @@ Route::get('/', function () {
 
 Route::get('/messages', [MessagesController::class, 'viewMessagesForUser']);
 
+Route::get('/admin/messages/{id}', [
+    MessagesController::class,
+    'viewMessagesForAdmin',
+]);
+
 Route::get('/home/{id?}', [CoursesController::class, 'viewCourses']);
 
 Route::get('/login', function () {
@@ -70,3 +75,10 @@ Route::post('/home/{id?}', [OrdersController::class, 'createOrder']);
 Route::post('/orders', [OrdersController::class, 'acceptOrder']);
 
 Route::post('/admin/login', [AdminController::class, 'auth']);
+
+Route::post('/messages', [MessagesController::class, 'sendMessageToAdmin']);
+
+Route::post('/admin/messages/{id}', [
+    MessagesController::class,
+    'sendMessageToUser',
+]);

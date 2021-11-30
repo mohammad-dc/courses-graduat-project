@@ -8,18 +8,32 @@ use Illuminate\Support\Facades\DB;
 
 class MessagesController extends Controller
 {
-    public function sendMessage(Request $req, $id)
+    public function sendMessageToAdmin(Request $req,)
     {
         $Message = new Message();
-        $sender = 'admin';
-        if ($req->session()->has('user')) {
-            $sender = 'user';
-        }
-        $Message->user_id = $id;
+        $sender = 'user';
+        $user = $req->session()->get('user');
+        $Message->user_id = $user->id;
         $Message->sender = $sender;
         $Message->message = $req->message;
 
         $Message->save();
+
+        return back();
+    }
+
+    public function sendMessageToUser(Request $req, $id)
+    {
+        $Message = new Message();
+        $sender = 'admin';
+        $user_id = (int)$id;
+        $Message->user_id = $user_id;
+        $Message->sender = $sender;
+        $Message->message = $req->message;
+
+        $Message->save();
+
+        return back();
     }
 
     public function viewMessagesForUser(Request $req)
@@ -34,6 +48,17 @@ class MessagesController extends Controller
         } else {
             return redirect('login?error=true');
         }
+    }
+
+
+    public function viewMessagesForAdmin(Request $req, $id)
+    {       
+        $user_id = (int)$id;
+            $query = DB::select(
+                "select sender, message from messages where user_id={$user_id}"
+            );
+      
+            return view('adminMessages', ['messages' => $query, "id" => $id]);
     }
 
     public function getMessagesSenderForAdmin()

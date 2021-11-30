@@ -16,6 +16,11 @@
         <div class="right">
             <form action="login" method="POST">
                 <h1>Login to your account</h1>
+                @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                  </div>
+                @endif
                 @csrf
     
                 <div class="mb-3">

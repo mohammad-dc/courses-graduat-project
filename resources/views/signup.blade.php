@@ -12,6 +12,11 @@
     <div class="page">
         <form action="signup" method="POST">
             <h1>Create your account</h1>
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                {{$errors->first()}}
+              </div>
+            @endif
             @csrf
             <div class="container">
                 <div class="row">
