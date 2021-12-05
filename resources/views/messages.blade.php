@@ -56,13 +56,13 @@
                 @if($message->sender == "admin")
                   <div class="message-wrapper-left">
                     <div class="message left">
-                      {{$message->message}}
+                      <p>{{$message->message}}</p>
                     </div>
                   </div>
                 @else
                   <div class="message-wrapper-right">
                     <div class="message right">
-                      {{$message->message}}
+                      <p>{{$message->message}}</p>
                     </div>
                   </div>
                 @endif

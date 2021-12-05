@@ -10,6 +10,7 @@ class MessagesController extends Controller
 {
     public function sendMessageToAdmin(Request $req,)
     {
+        if ($req->session()->has('user')) {
         $Message = new Message();
         $sender = 'user';
         $user = $req->session()->get('user');
@@ -20,6 +21,9 @@ class MessagesController extends Controller
         $Message->save();
 
         return back();
+    } else {
+        return redirect('login?error=true');
+    }
     }
 
     public function sendMessageToUser(Request $req, $id)

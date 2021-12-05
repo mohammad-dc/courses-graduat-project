@@ -60,7 +60,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="head">
-                                <p>{{$course->name}}</p>
+                                <p class="course-name">{{$course->name}}</p>
                                 <p>({{$course->type}})</p>
                             </div>
                             <div class="actions">
@@ -79,5 +79,16 @@
    </div>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+   <script>
+     function truncate(str) {
+      return str.length > 20 ? str.substring(0, 7) + "..." : str;
+    }
+
+     let course_name = document.querySelectorAll(".course-name");
+     course_name.forEach(element => {
+      let new_value = truncate(element.innerHTML);
+      element.innerHTML = new_value;
+     });
+   </script>
 </body>
 </html>

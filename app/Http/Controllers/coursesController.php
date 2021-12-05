@@ -33,9 +33,29 @@ class CoursesController extends Controller
         if ($req->session()->has('user')) {
             $user = $req->session()->get('user');
 
-            $query = DB::select(
-                "SELECT c.id, c.user_id, c.name, c.type FROM courses c LEFT JOIN orders o ON o.course_id = c.id WHERE o.course_id IS NULL and c.user_id!={$user->id} or c.user_id!={$user->id} and o.user_id!={$user->id} and o.accepted=0"
+            $query_courses = DB::select(
+                "SELECT DISTINCT c.id, c.user_id, c.name, c.type FROM courses c LEFT JOIN orders o ON o.course_id = c.id WHERE o.course_id IS NULL and c.user_id!={$user->id} or c.user_id!={$user->id} and o.user_id!={$user->id} and o.accepted=0"
             );
+
+            $query_orders = DB::select(
+                "SELECT course_id FROM orders WHERE user_id={$user->id} and accepted=0"
+            );
+
+            $query = [];
+            $exist = false;
+
+            foreach ($query_courses as $qc) {
+                $exist = false;
+                foreach ($query_orders as $qo) {
+                    if ($qc->id == $qo->course_id) {
+                        $exist = true;
+                    }
+                }
+                if (!$exist) {
+                    array_push($query, $qc);
+                }
+            }
+
             return view('home', ['courses' => $query, 'user' => $user]);
         } else {
             return redirect('login?error=true');
